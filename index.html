@@ -11,110 +11,17 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            background: linear-gradient(120deg, #e0eafc, #cfdef3); /* Fallback for animated gradient */
             overflow-x: hidden;
         }
 
-        /* Smooth Scrolling */
+        /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Header Section */
-        header {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            font-family: 'Lora', serif;
-            position: relative;
-            background: linear-gradient(135deg, #00bcd4, #ff6f61);
-            background-size: 200% 200%;
-            animation: gradientAnimation 5s ease infinite;
-            z-index: 1;
-        }
-
-        header h1 {
-            font-size: 4.5em;
-            font-weight: 700;
-            margin: 0;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
-        }
-
-        header p {
-            font-size: 1.6em;
-            margin-top: 10px;
-            line-height: 1.5;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 10px 0;
-            z-index: 10;
-            transition: background 0.3s ease-in-out;
-        }
-
-        nav a {
-            color: white;
-            padding: 15px 25px;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 1.3em;
-            letter-spacing: 2px;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #ff6347;
-        }
-
-        /* About Section with Image Behind Text */
-        .about {
-            position: relative;
-            padding: 80px 20px;
-            color: white;
-            text-align: center;
-            z-index: 1;
-        }
-
-        .about h1 {
-            font-family: 'Lora', serif;
-            font-size: 3em;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.9);
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
-        }
-
-        .about p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-top: 20px;
-            font-family: 'Poppins', sans-serif;
-            color: rgba(255, 255, 255, 0.9);
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
-        }
-
-        .about::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.pexels.com/photos/1550304/pexels-photo-1550304.jpeg') no-repeat center center;
-            background-size: cover;
-            filter: brightness(50%);
-            z-index: -1;
-        }
-
-        /* Keyframes for Gradient Animation */
-        @keyframes gradientAnimation {
+        /* Animated Gradient */
+        @keyframes gradientScroll {
             0% {
                 background-position: 0% 50%;
             }
@@ -126,63 +33,226 @@
             }
         }
 
-        /* Projects Section */
-        .projects {
-            padding: 80px 20px;
-            background: #f8f8f8;
+        body {
+            background: linear-gradient(120deg, #ff9a9e, #fad0c4, #fbc2eb);
+            background-size: 200% 200%;
+            animation: gradientScroll 15s ease infinite;
         }
 
-        .projects h1 {
+        /* Header Section */
+        header {
+            position: relative;
+            text-align: center;
+            color: white;
+            padding: 120px 20px;
+        }
+
+        header h1 {
+            font-size: 4em;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 3px;
+        }
+
+        header p {
+            font-size: 1.5em;
+            font-weight: 400;
+            margin-top: 10px;
+        }
+
+        header .hero-text-overlay {
+            position: relative;
+            z-index: 2;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.pexels.com/photos/2871745/pexels-photo-2871745.jpeg') no-repeat center center/cover;
+            filter: blur(4px);
+            z-index: 1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff9a9e;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+
+        .about h1 {
             font-family: 'Lora', serif;
             font-size: 3em;
-            font-weight: 700;
             color: #333;
         }
 
-        .projects p {
+        .about p {
             font-size: 1.2em;
             color: #555;
             line-height: 1.6;
             margin-top: 20px;
         }
 
-        /* Footer */
-        footer {
-            background: #333;
-            color: white;
-            padding: 30px 20px;
+        /* Projects Section */
+        .projects {
+            padding: 80px 20px;
             text-align: center;
+            background-color: #ffffff;
+        }
+
+        .projects h1 {
+            font-family: 'Lora', serif;
+            font-size: 3em;
+            color: #333;
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .project img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .project button {
+            background-color: #ff9a9e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .project button:hover {
+            background-color: #e57373;
+        }
+
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: relative;
+            background: white;
+            margin: 10% auto;
+            padding: 20px;
+            width: 60%;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #e57373;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+
+        .contact h1 {
+            font-family: 'Lora', serif;
+            font-size: 3em;
+            color: #333;
+        }
+
+        .contact ul {
+            list-style: none;
+            padding: 0;
             font-size: 1.2em;
         }
 
-        /* Media Queries for Responsiveness */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 3em;
-            }
-
-            header p {
-                font-size: 1.2em;
-            }
-
-            .about h1 {
-                font-size: 2.5em;
-            }
+        .contact li {
+            margin: 10px 0;
         }
 
-        @media (max-width: 480px) {
-            nav a {
-                font-size: 1em;
-            }
-
-            header h1 {
-                font-size: 2.5em;
-            }
+        .social-links a {
+            font-size: 2em;
+            margin: 0 10px;
+            color: #333;
+            transition: color 0.3s;
         }
+
+        .social-links a:hover {
+            color: #ff9a9e;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -190,29 +260,68 @@
         <a href="#contact">Contact</a>
     </nav>
 
-    <!-- Header Section -->
     <header id="home">
-        <h1>Film Portfolio</h1>
-        <p>Crafting Cinematic Stories with Passion and Precision</p>
+        <div class="hero-text-overlay">
+            <h1>Film Portfolio</h1>
+            <p>Capturing stories through the lens</p>
+        </div>
     </header>
 
-    <!-- About Section -->
     <section id="about" class="about">
         <h1>About Me</h1>
-        <p>
-            I am a dedicated film technician, operator, and editor. My work focuses on blending visual storytelling with technical expertise, ensuring each frame conveys emotion and purpose. From live broadcasts to cinematic productions, I thrive on creating impactful visual narratives.
-        </p>
+        <p>I am a highly skilled film technician, operator, and editor, passionate about bringing stories to life through cinematography and editing.</p>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="projects">
         <h1>Projects</h1>
-        <p>Explore my recent works and collaborations in film, live-streaming, and editing.</p>
+        <div class="project-gallery">
+            <div class="project">
+                <img src="project1.jpg" alt="Project 1">
+                <button onclick="openModal('Project 1', 'Details about Project 1')">View Details</button>
+            </div>
+            <div class="project">
+                <img src="project2.jpg" alt="Project 2">
+                <button onclick="openModal('Project 2', 'Details about Project 2')">View Details</button>
+            </div>
+        </div>
     </section>
 
-    <!-- Footer -->
+    <section id="contact" class="contact">
+        <h1>Contact Me</h1>
+        <p>Let's collaborate on your next project!</p>
+        <ul>
+            <li>Email: <a href="mailto:email@example.com">email@example.com</a></li>
+            <li>Phone: (123) 456-7890</li>
+        </ul>
+        <div class="social-links">
+            <a href="#" target="_blank">LinkedIn</a>
+            <a href="#" target="_blank">Instagram</a>
+            <a href="#" target="_blank">Vimeo</a>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2024 Your Name. All Rights Reserved.</p>
     </footer>
+
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Project Title</h2>
+            <p id="modalDescription">Details about the project.</p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(title, description) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDescription').innerText = description;
+            document.getElementById('projectModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
