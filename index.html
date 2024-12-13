@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Film Portfolio - Home</title>
+    <title>Film Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
@@ -11,28 +11,84 @@
 <body>
 
     <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
     </nav>
 
-    <header class="hero" data-aos="fade-up">
+    <!-- Home Section -->
+    <section id="home" class="hero" data-aos="fade-up">
         <h1>Your Name</h1>
         <p>Film Director | Cinematographer | Editor</p>
-    </header>
-
-    <section class="intro" data-aos="fade-up">
-        <h2>Welcome to My Film Portfolio</h2>
-        <p>Explore my work in filmmaking, cinematography, and editing.</p>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="about" data-aos="fade-up">
+        <h1>About Me</h1>
+        <p>I’m [Your Name], a passionate filmmaker with a focus on cinematography, editing, and directing. I strive to tell compelling stories through the lens of a camera.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects" data-aos="fade-up">
+        <h1>My Projects</h1>
+        <div class="project-gallery">
+            <div class="project">
+                <img src="images/project1.jpg" alt="Project 1">
+                <button class="view-details" onclick="openModal('project1')">View Details</button>
+            </div>
+            <div class="project">
+                <img src="images/project2.jpg" alt="Project 2">
+                <button class="view-details" onclick="openModal('project2')">View Details</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact" data-aos="fade-up">
+        <h1>Contact Me</h1>
+        <p>If you would like to collaborate or inquire about my work, please feel free to reach out.</p>
+        <ul>
+            <li>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></li>
+            <li>Phone: (123) 456-7890</li>
+        </ul>
+    </section>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">X</span>
+            <h2 id="modalTitle">Project Title</h2>
+            <p id="modalDescription">Project description goes here.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
         <p>&copy; 2024 Your Name - All Rights Reserved</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init();</script>
+    <script>
+        // AOS (Animate on Scroll)
+        AOS.init();
+
+        // Modal function to display project details
+        function openModal(project) {
+            document.getElementById('projectModal').style.display = 'block';
+            if (project === 'project1') {
+                document.getElementById('modalTitle').innerText = 'Project 1';
+                document.getElementById('modalDescription').innerText = 'Details about Project 1...';
+            } else if (project === 'project2') {
+                document.getElementById('modalTitle').innerText = 'Project 2';
+                document.getElementById('modalDescription').innerText = 'Details about Project 2...';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
 
