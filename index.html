@@ -20,18 +20,24 @@
         header {
             background: #111;
             color: white;
-            padding: 60px 0;
+            padding: 80px 0;
             text-align: center;
             font-family: 'Playfair Display', serif;
+            position: relative;
+            opacity: 0;
+            animation: dropDown 1.5s ease-out forwards;
         }
 
         header h1 {
-            font-size: 3em;
+            font-size: 4em;
             margin: 0;
+            font-weight: 700;
         }
 
         header p {
-            font-size: 1.5em;
+            font-size: 2em;
+            font-weight: 400;
+            margin-top: 10px;
         }
 
         /* Navigation Styles */
@@ -48,9 +54,9 @@
 
         nav a {
             color: white;
-            padding: 0 20px;
+            padding: 0 25px;
             text-decoration: none;
-            font-size: 1.2em;
+            font-size: 1.5em;
         }
 
         nav a:hover {
@@ -59,14 +65,14 @@
 
         /* Sections */
         section {
-            padding: 60px 20px;
+            padding: 80px 20px;
             margin: 80px 0;  /* Adjusted margin for navbar */
             text-align: center;
         }
 
         .hero {
             background-color: #2c3e50;
-            padding: 100px 0;
+            padding: 120px 0;
             color: white;
         }
 
@@ -77,24 +83,26 @@
         .project-gallery {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 30px;
+            flex-wrap: wrap;
         }
 
         .project img {
-            width: 300px;
-            height: 200px;
+            width: 320px;
+            height: 220px;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 12px;
         }
 
         .project button {
             background-color: #ff6347;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 15px;
             border-radius: 5px;
+            font-size: 1.1em;
         }
 
         .project button:hover {
@@ -117,16 +125,17 @@
 
         .modal-content {
             background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
+            margin: 10% auto;
+            padding: 30px;
             border: 1px solid #888;
-            width: 80%;
+            width: 60%;
+            border-radius: 10px;
         }
 
         .close-btn {
             color: #aaa;
             float: right;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
         }
 
@@ -141,9 +150,23 @@
         footer {
             background: #111;
             color: white;
-            padding: 20px 0;
+            padding: 30px 0;
             text-align: center;
+            font-size: 1.2em;
         }
+
+        /* Animations */
+        @keyframes dropDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -157,19 +180,21 @@
 
     <!-- Home Section -->
     <section id="home" class="hero" data-aos="fade-up">
-        <h1>Your Name</h1>
-        <p>Film Director | Cinematographer | Editor</p>
+        <header>
+            <h1>Welcome to My Film Portfolio</h1>
+            <p>Expert Cinematographer, Director, and Editor Crafting Stories Through the Lens</p>
+        </header>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about" data-aos="fade-up">
         <h1>About Me</h1>
-        <p>I’m [Your Name], a passionate filmmaker with a focus on cinematography, editing, and directing. I strive to tell compelling stories through the lens of a camera.</p>
+        <p>I am a seasoned film technician with expertise in cinematography, camera operation, and video editing. My journey in the film industry is driven by a passion for visual storytelling and technical excellence. I work to create compelling cinematic experiences from start to finish, ensuring the vision comes to life with precision and creativity.</p>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="projects" data-aos="fade-up">
-        <h1>My Projects</h1>
+        <h1>Notable Projects</h1>
         <div class="project-gallery">
             <div class="project">
                 <img src="images/project1.jpg" alt="Project 1">
@@ -185,7 +210,7 @@
     <!-- Contact Section -->
     <section id="contact" class="contact" data-aos="fade-up">
         <h1>Contact Me</h1>
-        <p>If you would like to collaborate or inquire about my work, please feel free to reach out.</p>
+        <p>If you're interested in collaborating on a film project or have any inquiries, feel free to reach out to me directly. I look forward to discussing how I can contribute to your next creative endeavor.</p>
         <ul>
             <li>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></li>
             <li>Phone: (123) 456-7890</li>
@@ -197,13 +222,13 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">X</span>
             <h2 id="modalTitle">Project Title</h2>
-            <p id="modalDescription">Project description goes here.</p>
+            <p id="modalDescription">Project description goes here. This section can include a brief summary of the project, your role, and the impact it had.</p>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Your Name - All Rights Reserved</p>
+        <p>&copy; 2024 Your Name. All Rights Reserved.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -216,10 +241,10 @@
             document.getElementById('projectModal').style.display = 'block';
             if (project === 'project1') {
                 document.getElementById('modalTitle').innerText = 'Project 1';
-                document.getElementById('modalDescription').innerText = 'Details about Project 1...';
+                document.getElementById('modalDescription').innerText = 'Details about Project 1. Highlight your role, challenges, and achievements in this project.';
             } else if (project === 'project2') {
                 document.getElementById('modalTitle').innerText = 'Project 2';
-                document.getElementById('modalDescription').innerText = 'Details about Project 2...';
+                document.getElementById('modalDescription').innerText = 'Details about Project 2. Showcase your expertise and contributions to this specific project.';
             }
         }
 
@@ -229,5 +254,6 @@
     </script>
 </body>
 </html>
+
 
 
