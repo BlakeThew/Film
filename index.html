@@ -11,55 +11,41 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #e0eafc, #cfdef3); /* Soft abstract gradient */
             overflow-x: hidden;
         }
 
-        /* Smooth Scroll */
+        /* Smooth Scrolling */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Hero Section Background */
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.pexels.com/photos/2871745/pexels-photo-2871745.jpeg') no-repeat center center; /* Abstract starry night background */
-            background-size: cover;
-            filter: blur(8px); /* Keeps the background blurry */
-            z-index: -1;
-        }
-
         /* Header Section */
         header {
-            background: linear-gradient(135deg, #00bcd4, #ff6f61); /* Creative Gradient */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: white;
-            padding: 100px 20px;
             text-align: center;
             font-family: 'Lora', serif;
             position: relative;
+            background: linear-gradient(135deg, #00bcd4, #ff6f61);
+            background-size: 200% 200%;
+            animation: gradientAnimation 5s ease infinite;
             z-index: 1;
-            opacity: 0;
-            animation: dropDown 1.5s ease-out forwards;
         }
 
         header h1 {
             font-size: 4.5em;
             font-weight: 700;
             margin: 0;
-            letter-spacing: 3px;
-            animation: fadeIn 1.5s ease-out forwards;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
         }
 
         header p {
             font-size: 1.6em;
-            font-weight: 400;
             margin-top: 10px;
             line-height: 1.5;
-            animation: fadeIn 2s ease-out forwards;
         }
 
         /* Navigation */
@@ -88,107 +74,76 @@
             color: #ff6347;
         }
 
-        /* Section Styling */
-        section {
+        /* About Section with Image Behind Text */
+        .about {
+            position: relative;
             padding: 80px 20px;
+            color: white;
             text-align: center;
-            transition: all 0.5s ease;
+            z-index: 1;
         }
 
-        .about, .projects, .contact {
+        .about h1 {
+            font-family: 'Lora', serif;
+            font-size: 3em;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .about p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-top: 20px;
+            font-family: 'Poppins', sans-serif;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.pexels.com/photos/1550304/pexels-photo-1550304.jpeg') no-repeat center center;
+            background-size: cover;
+            filter: brightness(50%);
+            z-index: -1;
+        }
+
+        /* Keyframes for Gradient Animation */
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 80px 20px;
             background: #f8f8f8;
         }
 
-        /* About Section */
-        .about h1, .projects h1, .contact h1 {
+        .projects h1 {
             font-family: 'Lora', serif;
             font-size: 3em;
             font-weight: 700;
             color: #333;
         }
 
-        .about p, .projects p, .contact p {
+        .projects p {
             font-size: 1.2em;
             color: #555;
             line-height: 1.6;
             margin-top: 20px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* Project Gallery */
-        .project-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 30px;
-            justify-items: center;
-        }
-
-        .project img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .project img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-        }
-
-        .project button {
-            background-color: #ff6347;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            margin-top: 15px;
-            border-radius: 5px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .project button:hover {
-            background-color: #e05332;
-        }
-
-        /* Modal for Project Details */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            overflow: auto;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .modal-content {
-            background-color: #fff;
-            margin: 10% auto;
-            padding: 30px;
-            width: 60%;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-        }
-
-        .close-btn {
-            color: #aaa;
-            font-size: 32px;
-            font-weight: bold;
-            cursor: pointer;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-
-        .close-btn:hover {
-            color: #333;
         }
 
         /* Footer */
@@ -200,79 +155,34 @@
             font-size: 1.2em;
         }
 
-        /* Animation Keyframes */
-        @keyframes dropDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        /* Social Links */
-        .social-links a {
-            font-size: 2em;
-            margin: 0 15px;
-            color: #333;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #ff6347;
-        }
-
-        /* Contact Section */
-        .contact ul {
-            list-style: none;
-            padding: 0;
-            font-size: 1.2em;
-        }
-
-        .contact li {
-            margin: 10px 0;
-        }
-
         /* Media Queries for Responsiveness */
         @media (max-width: 768px) {
-            .hero h1 {
+            header h1 {
                 font-size: 3em;
             }
-            .hero p {
+
+            header p {
                 font-size: 1.2em;
             }
-            .project-gallery {
-                grid-template-columns: 1fr;
+
+            .about h1 {
+                font-size: 2.5em;
             }
         }
 
         @media (max-width: 480px) {
-            .nav a {
+            nav a {
                 font-size: 1em;
             }
-            .hero h1 {
+
+            header h1 {
                 font-size: 2.5em;
             }
         }
     </style>
 </head>
 <body>
-
-    <!-- Background Shape -->
-    <div class="background-shape"></div>
-
-    <!-- Navigation Bar -->
+    <!-- Navigation -->
     <nav>
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -280,78 +190,29 @@
         <a href="#contact">Contact</a>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-background"></div> <!-- Background Design -->
-        <header>
-            <h1>Film Portfolio</h1>
-            <p>Capturing Stories Through the Lens with Expertise in Cinematography and Editing</p>
-        </header>
-    </section>
+    <!-- Header Section -->
+    <header id="home">
+        <h1>Film Portfolio</h1>
+        <p>Crafting Cinematic Stories with Passion and Precision</p>
+    </header>
 
     <!-- About Section -->
     <section id="about" class="about">
         <h1>About Me</h1>
-        <p>I am a highly skilled film technician, operator, and editor. My expertise lies in crafting compelling cinematic experiences through precision camera work, lighting, and post-production editing. I'm passionate about bringing stories to life, whether on a feature film, a commercial, or a live-stream event.</p>
-        <img src="https://images.pexels.com/photos/1550304/pexels-photo-1550304.jpeg" alt="About Image" style="width: 100%; height: auto; border-radius: 15px; margin-top: 30px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
+        <p>
+            I am a dedicated film technician, operator, and editor. My work focuses on blending visual storytelling with technical expertise, ensuring each frame conveys emotion and purpose. From live broadcasts to cinematic productions, I thrive on creating impactful visual narratives.
+        </p>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <h1>Projects</h1>
-        <div class="project-gallery">
-            <div class="project">
-                <img src="project1.jpg" alt="Project 1">
-                <button data-title="Project 1" data-description="Details about Project 1." onclick="openModal(this)">View Details</button>
-            </div>
-            <div class="project">
-                <img src="project2.jpg" alt="Project 2">
-                <button data-title="Project 2" data-description="Details about Project 2." onclick="openModal(this)">View Details</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h1>Contact Me</h1>
-        <p>If you're interested in collaborating on a film project or just want to get in touch, feel free to contact me!</p>
-        <ul>
-            <li>Email: <a href="mailto:email@example.com">email@example.com</a></li>
-            <li>Phone: (123) 456-7890</li>
-        </ul>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
-            <a href="https://www.instagram.com/yourprofile" target="_blank">Instagram</a>
-            <a href="https://www.vimeo.com/yourprofile" target="_blank">Vimeo</a>
-        </div>
+        <p>Explore my recent works and collaborations in film, live-streaming, and editing.</p>
     </section>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 Your Name. All Rights Reserved.</p>
     </footer>
-
-    <!-- Modal Popup -->
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">X</span>
-            <h2 id="modalTitle">Project Title</h2>
-            <p id="modalDescription">Details about this project will be displayed here, including your role and contributions.</p>
-        </div>
-    </div>
-
-    <script>
-        // Modal logic for opening and closing project details
-        function openModal(button) {
-            document.getElementById('projectModal').style.display = 'block';
-            document.getElementById('modalTitle').innerText = button.getAttribute('data-title');
-            document.getElementById('modalDescription').innerText = button.getAttribute('data-description');
-        }
-
-        function closeModal() {
-            document.getElementById('projectModal').style.display = 'none';
-        }
-    </script>
-
 </body>
 </html>
