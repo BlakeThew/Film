@@ -1,84 +1,207 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Film Portfolio</title>
-    <link rel="stylesheet" href="styles.css"> <!-- External CSS for styling -->
+    <title>Blake's Film Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
+        /* General Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: #f4f4f4;
+            color: #333;
         }
+
         header {
-            background-color: #333;
+            background: #111;
             color: white;
-            padding: 20px;
+            padding: 60px 0;
             text-align: center;
+            font-family: 'Playfair Display', serif;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        header p {
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+
         nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 15px 0;
             text-align: center;
-            background-color: #444;
-            padding: 10px;
+            z-index: 10;
         }
+
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 15px;
-            padding: 10px;
+            margin: 0 20px;
+            font-size: 1.2em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
         }
+
         nav a:hover {
-            background-color: #555;
+            color: #ff6347; /* Hover color */
         }
+
         .hero {
             background: url('your-image.jpg') no-repeat center center/cover;
-            height: 300px;
+            height: 500px;
             text-align: center;
             color: white;
-            padding-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-attachment: fixed;
         }
+
         .hero h1 {
-            font-size: 3em;
+            font-size: 4em;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
         }
+
         section {
-            padding: 20px;
-            margin: 20px 0;
-        }
-        .projects .project {
-            display: inline-block;
-            width: 30%;
-            margin: 10px;
+            padding: 50px 20px;
             text-align: center;
+            background-color: #fff;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
+        section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        /* Project Section */
+        .projects {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .project {
+            width: 30%;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
         .project img {
             width: 100%;
-            height: auto;
-            border-radius: 8px;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: opacity 0.3s ease;
         }
+
+        .project:hover {
+            transform: scale(1.05);
+        }
+
+        .project:hover img {
+            opacity: 0.7;
+        }
+
         .project h3 {
-            margin-top: 10px;
+            padding: 15px;
+            background-color: #222;
+            color: white;
+            font-size: 1.4em;
+            text-transform: uppercase;
+            font-weight: 600;
         }
+
+        /* Footer */
         footer {
-            background-color: #333;
+            background-color: #111;
             color: white;
             padding: 20px;
             text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Contact Section */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        ul li a {
+            color: #ff6347;
+            text-decoration: none;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .projects {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .project {
+                width: 80%;
+            }
+
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            nav a {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>Blake Thew</h1>
-        <p>Camera Technician | Camera Operator | Editor</p>
-    </header>
 
     <nav>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
     </nav>
+
+    <header>
+        <h1>Blake Thew</h1>
+        <p>Camera Technician | Camera Operator | Editor</p>
+    </header>
 
     <div class="hero">
         <h1>Welcome to My Film Portfolio</h1>
@@ -89,31 +212,30 @@
         <p>Experienced Film Technician, Camera Operator, and Editor seeking opportunities to contribute my skills on film sets and bring creative projects to life.</p>
     </section>
 
-    <section id="projects" class="projects">
+    <section id="projects">
         <h2>My Work</h2>
-        <div class="project">
-            <img src="C:\Users\Kizuato\Desktop\Film\Screenshot 2024-12-13 213111.png" alt="Project 1">
-            <h3>SkullCandy Oz Grom Open</h3>
-            <p>I was hired under Value Imagery, where I was part of the film team. My responsibilities included gathering content for the editors and assisting the live stream team with camera operation, ensuring smooth footage capture throughout the event.</p>
-        </div>
-        <div class="project">
-            <img src="project2.jpg" alt="Project 2">
-            <h3>Project 2 Title</h3>
-            <p>Short description of the project. Highlight the role you played and any unique challenges or achievements.</p>
-        </div>
-        <div class="project">
-            <img src="project3.jpg" alt="Project 3">
-            <h3>Project 3 Title</h3>
-            <p>Short description of the project. Highlight the role you played and any unique challenges or achievements.</p>
+        <div class="projects">
+            <div class="project">
+                <img src="project1.jpg" alt="Project 1">
+                <h3>Project 1</h3>
+            </div>
+            <div class="project">
+                <img src="project2.jpg" alt="Project 2">
+                <h3>Project 2</h3>
+            </div>
+            <div class="project">
+                <img src="project3.jpg" alt="Project 3">
+                <h3>Project 3</h3>
+            </div>
         </div>
     </section>
 
     <section id="contact">
         <h2>Contact</h2>
-        <p>If you'd like to collaborate or have any inquiries, feel free to reach out to me!</p>
+        <p>Let’s collaborate! Reach out to me for film projects, collaborations, or inquiries:</p>
         <ul>
-            <li>Email: <a href="mailto:Blake.thew1@outlook.com">blake.thew1@outlook.com</a></li>
-            <li>Phone: (123) 456-7890</li>
+            <li>Email: <a href="mailto:your-Blake.thew1@outlook.com">your-blake.thew1@outlook.com</a></li>
+            <li>Phone: 0481555875</li>
         </ul>
     </section>
 
