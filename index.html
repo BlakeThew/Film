@@ -11,14 +11,24 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #f0f0f0, #fff6e6); /* Soft Cream Gradient */
-            color: #333;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3); /* Soft abstract gradient */
             overflow-x: hidden;
         }
 
         /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
+        }
+
+        /* Abstract Background Shape */
+        .background-shape {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.toptal.com/designers/subtlepatterns/patterns/polygons.png') repeat;
+            z-index: -1;
         }
 
         /* Header Section */
@@ -98,13 +108,6 @@
 
         .about, .projects, .contact {
             background: #f8f8f8;
-        }
-
-        .hero {
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 150px 20px;
-            font-size: 2em;
         }
 
         /* About Section */
@@ -255,6 +258,9 @@
 </head>
 <body>
 
+    <!-- Background Shape -->
+    <div class="background-shape"></div>
+
     <!-- Navigation Bar -->
     <nav>
         <a href="#home">Home</a>
@@ -337,6 +343,13 @@
 
         function closeModal() {
             document.getElementById('projectModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('projectModal')) {
+                closeModal();
+            }
         }
     </script>
 
