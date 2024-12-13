@@ -4,72 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Film Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* General Styles */
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fafafa;
+            background: linear-gradient(135deg, #fff6e6, #f0f0f0); /* Soft Cream Gradient */
             color: #333;
-            scroll-behavior: smooth;
-            background: linear-gradient(135deg, #e0e0e0, #f5f5f5); /* Subtle gradient */
+            overflow-x: hidden;
         }
 
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header Section */
         header {
-            background-color: #222;
+            background: linear-gradient(135deg, #ff6347, #ff4500); /* Bold Gradient */
             color: white;
-            padding: 100px 0;
+            padding: 100px 20px;
             text-align: center;
-            font-family: 'Merriweather', serif;
+            font-family: 'Lora', serif;
             position: relative;
+            z-index: 1;
             opacity: 0;
             animation: dropDown 1.5s ease-out forwards;
         }
 
         header h1 {
-            font-size: 3.5em; /* Reduced size */
-            margin: 0;
+            font-size: 4em;
             font-weight: 700;
+            margin: 0;
+            letter-spacing: 3px;
         }
 
         header p {
-            font-size: 1.8em;
+            font-size: 1.6em;
             font-weight: 400;
             margin-top: 10px;
+            line-height: 1.5;
         }
 
-        /* Background Image & Design */
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('your-abstract-design.png') no-repeat center center fixed;
-            background-size: cover;
-            opacity: 0.1; /* Lightened for better readability */
-        }
-
-        /* Navigation Styles */
+        /* Navigation */
         nav {
-            display: flex;
-            justify-content: center;
-            background-color: #333;
-            padding: 15px;
             position: fixed;
-            width: 100%;
             top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 0;
             z-index: 10;
-            transition: background-color 0.3s ease;
+            transition: background 0.3s ease-in-out;
         }
 
         nav a {
             color: white;
-            padding: 0 25px;
+            padding: 15px 25px;
             text-decoration: none;
-            font-size: 1.5em;
+            text-transform: uppercase;
+            font-size: 1.3em;
+            letter-spacing: 2px;
+            font-weight: 600;
             transition: color 0.3s ease;
         }
 
@@ -77,36 +74,68 @@
             color: #ff6347;
         }
 
-        /* Sections */
-        section {
-            padding: 80px 20px;
-            margin: 80px 0;
-            text-align: center;
+        /* Hero Section Background */
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('your-awesome-background-image.jpg') no-repeat center center;
+            background-size: cover;
+            filter: blur(8px);
+            z-index: -1;
         }
 
-        .hero {
-            background-color: #222;
-            padding: 150px 20px;
-            color: white;
+        /* Section Styling */
+        section {
+            padding: 80px 20px;
+            text-align: center;
+            transition: all 0.5s ease;
         }
 
         .about, .projects, .contact {
-            background-color: #fff;
+            background: #f8f8f8;
+        }
+
+        .hero {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 150px 20px;
+            font-size: 2em;
+        }
+
+        /* About Section */
+        .about h1, .projects h1, .contact h1 {
+            font-family: 'Lora', serif;
+            font-size: 3em;
+            font-weight: 700;
             color: #333;
         }
 
+        .about p, .projects p, .contact p {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.6;
+            margin-top: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Project Gallery */
         .project-gallery {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
-            flex-wrap: wrap;
+            padding: 30px;
+            justify-items: center;
         }
 
         .project img {
-            width: 320px;
+            width: 100%;
             height: 220px;
             object-fit: cover;
-            border-radius: 12px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
         }
 
@@ -119,10 +148,10 @@
             color: white;
             border: none;
             padding: 12px 25px;
-            cursor: pointer;
             margin-top: 15px;
             border-radius: 5px;
             font-size: 1.1em;
+            cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
@@ -130,7 +159,7 @@
             background-color: #e05332;
         }
 
-        /* Modal */
+        /* Modal for Project Details */
         .modal {
             display: none;
             position: fixed;
@@ -139,44 +168,42 @@
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.7);
         }
 
         .modal-content {
-            background-color: #fefefe;
+            background-color: #fff;
             margin: 10% auto;
             padding: 30px;
-            border: 1px solid #888;
             width: 60%;
             border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
         }
 
         .close-btn {
             color: #aaa;
-            float: right;
             font-size: 32px;
             font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 20px;
         }
 
-        .close-btn:hover,
-        .close-btn:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
+        .close-btn:hover {
+            color: #333;
         }
 
         /* Footer */
         footer {
             background: #333;
             color: white;
-            padding: 30px 0;
+            padding: 30px 20px;
             text-align: center;
             font-size: 1.2em;
         }
 
-        /* Animations */
+        /* Animation Keyframes */
         @keyframes dropDown {
             0% {
                 opacity: 0;
@@ -188,15 +215,10 @@
             }
         }
 
-        /* Social Media Icons */
-        .social-links {
-            text-align: center;
-            margin-top: 20px;
-        }
-
+        /* Social Links */
         .social-links a {
-            margin: 0 15px;
             font-size: 2em;
+            margin: 0 15px;
             color: #333;
             transition: color 0.3s ease;
         }
@@ -205,10 +227,22 @@
             color: #ff6347;
         }
 
+        /* Contact Section */
+        .contact ul {
+            list-style: none;
+            padding: 0;
+            font-size: 1.2em;
+        }
+
+        .contact li {
+            margin: 10px 0;
+        }
+
     </style>
 </head>
 <body>
 
+    <!-- Navigation Bar -->
     <nav>
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -220,38 +254,38 @@
     <section id="home" class="hero">
         <div class="hero-background"></div> <!-- Background Design -->
         <header>
-            <h1>Welcome to My Film Portfolio</h1>
-            <p>Expert Cinematographer, Director, and Editor Crafting Stories Through the Lens</p>
+            <h1>Film Portfolio</h1>
+            <p>Capturing Stories Through the Lens with Expertise in Cinematography and Editing</p>
         </header>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about" data-aos="fade-up">
+    <section id="about" class="about">
         <h1>About Me</h1>
-        <p>I am a seasoned film technician with expertise in cinematography, camera operation, and video editing. My journey in the film industry is driven by a passion for visual storytelling and technical excellence. I create compelling cinematic experiences from start to finish, ensuring the vision comes to life with precision and creativity.</p>
+        <p>I am a highly skilled film technician, operator, and editor. My expertise lies in crafting compelling cinematic experiences through precision camera work, lighting, and post-production editing. I'm passionate about bringing stories to life, whether on a feature film, a commercial, or a live-stream event.</p>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects" data-aos="fade-up">
-        <h1>Notable Projects</h1>
+    <section id="projects" class="projects">
+        <h1>Projects</h1>
         <div class="project-gallery">
             <div class="project">
-                <img src="images/project1.jpg" alt="Project 1">
-                <button class="view-details" onclick="openModal('project1')">View Details</button>
+                <img src="project1.jpg" alt="Project 1">
+                <button onclick="openModal('project1')">View Details</button>
             </div>
             <div class="project">
-                <img src="images/project2.jpg" alt="Project 2">
-                <button class="view-details" onclick="openModal('project2')">View Details</button>
+                <img src="project2.jpg" alt="Project 2">
+                <button onclick="openModal('project2')">View Details</button>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact" data-aos="fade-up">
+    <section id="contact" class="contact">
         <h1>Contact Me</h1>
-        <p>If you're interested in collaborating on a film project or have any inquiries, feel free to reach out to me directly. I look forward to discussing how I can contribute to your next creative endeavor.</p>
+        <p>If you're interested in collaborating on a film project or just want to get in touch, feel free to contact me!</p>
         <ul>
-            <li>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></li>
+            <li>Email: <a href="mailto:email@example.com">email@example.com</a></li>
             <li>Phone: (123) 456-7890</li>
         </ul>
         <div class="social-links">
@@ -261,7 +295,12 @@
         </div>
     </section>
 
-    <!-- Project Modal -->
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Your Name. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Modal Popup -->
     <div id="projectModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">X</span>
@@ -270,17 +309,8 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Your Name. All Rights Reserved.</p>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // AOS (Animate on Scroll)
-        AOS.init();
-
-        // Modal function to display project details
+        // Modal logic for opening and closing project details
         function openModal(project) {
             document.getElementById('projectModal').style.display = 'block';
             if (project === 'project1') {
@@ -299,6 +329,7 @@
 
 </body>
 </html>
+
 
 
 
